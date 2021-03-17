@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
     private WebDriver driver;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div[1]/header/div/nav/ul/li[5]/a")
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[1]/header/div/nav/ul/li[6]/a")
     private WebElement registration;
 
     public HomePage(WebDriver driver) {
