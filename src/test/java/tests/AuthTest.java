@@ -37,11 +37,9 @@ public class AuthTest {
     public void testLoginSuccess() {
         driver.get("https://www.spotify.com/ua-en/");
         homePage = new HomePage(driver);
-        homePage.getRegistration().click();
+        homePage.goToRegistration();
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.getEmail().sendKeys("spotify31test@gmail.com");
-        loginPage.getPassword().sendKeys("test123test");
-        loginPage.getSubmit().click();
+        loginPage.loginUser("spotify31test@gmail.com", "test123test");
         wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.elementToBeClickable(By.className("svelte-kdyqkb")));
         Assert.assertEquals("https://www.spotify.com/ua-en/account/overview/?locale=ua-en", driver.getCurrentUrl());

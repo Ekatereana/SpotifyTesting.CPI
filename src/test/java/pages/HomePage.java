@@ -19,4 +19,8 @@ public class HomePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
+    public void goToRegistration() {
+        registration.click();
+    }
 }

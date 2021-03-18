@@ -1,14 +1,10 @@
 package pages;
 
 import lombok.Data;
-import lombok.Value;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Data
 public class LoginPage {
@@ -28,7 +24,11 @@ public class LoginPage {
         this.driver = driver;
     }
 
-
+    public void loginUser(String username, String passwd) {
+        email.sendKeys(username);
+        password.sendKeys(passwd);
+        submit.click();
+    }
 
 
 }
