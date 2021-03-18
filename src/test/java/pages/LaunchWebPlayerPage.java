@@ -19,15 +19,18 @@ public class LaunchWebPlayerPage {
     @FindBy(css = "#segmented-desktop-launch")
     private WebElement launchButton;
 
+    @FindBy(name = "g-recaptcha-response")
+    private WebElement iFrame;
+
 
     public LaunchWebPlayerPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public LaunchWebPlayerPage(WebDriver driver, WebDriverWait wait, By element) {
+    public LaunchWebPlayerPage(WebDriver driver, WebDriverWait wait, ExpectedCondition condition) {
         PageFactory.initElements(driver, this);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(condition);
         this.driver = driver;
     }
 }

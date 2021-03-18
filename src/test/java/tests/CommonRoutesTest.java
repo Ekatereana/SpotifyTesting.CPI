@@ -27,7 +27,7 @@ public class CommonRoutesTest {
         driver = new ChromeDriver();
         // full size window
         driver.manage().window().maximize();
-        wait =  new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 20);
 //        login user
         driver.get("https://www.spotify.com/ua-en/");
         homePage = new HomePage(driver);
@@ -42,25 +42,38 @@ public class CommonRoutesTest {
     }
 
     //    link test failed text
-//    @Test
-//    public void testHiddenIFrame() {
-////        go to launch web player page
-//        Assert.assertEquals("https://www.spotify.com/ua-en/home/", driver.getCurrentUrl());
-//        WebElement free =  wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Start Free Trial"))));
-//        Assert.assertFalse(free.getCssValue("background-color").equals("#000"));
-//
-//
-//    }
+    @Test
+    public void testLaunchButtonBackgroundColor() {
+//        go to launch web player page
+        Assert.assertEquals("https://www.spotify.com/ua-en/home/", driver.getCurrentUrl());
+        WebElement free = wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Start Free Trial"))));
+        Assert.assertFalse(free.getCssValue("background-color").equals("#000"));
 
-//    test css
+
+    }
+
+    //    test css
     @Test
     public void testBackgroundColorOnHover() throws InterruptedException {
-
 //        go to launch web player page
         LaunchWebPlayerPage launchWebPlayerPage =
-                new LaunchWebPlayerPage(driver, wait, By.cssSelector("#segmented-desktop-launch"));
+                new LaunchWebPlayerPage(
+                        driver,
+                        wait,
+                        ExpectedConditions.elementToBeClickable(By.cssSelector("#segmented-desktop-launch")));
         Assert.assertEquals("rgba(0, 0, 0, 0)",
                 launchWebPlayerPage.getLaunchButton().getCssValue("background-color"));
+    }
+
+//   name negative test passed
+    @Test
+    public void testIFrameNotDisplayed() {
+        LaunchWebPlayerPage launchWebPlayerPage = new LaunchWebPlayerPage(
+                driver,
+                wait,
+                ExpectedConditions.numberOfElementsToBeMoreThan(By.name("g-recaptcha-response"), 0)
+        );
+        Assert.assertFalse(launchWebPlayerPage.getIFrame().isDisplayed());
 
 
     }
