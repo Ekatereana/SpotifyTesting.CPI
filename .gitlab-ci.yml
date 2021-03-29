@@ -1,8 +1,11 @@
 image: maven:3.6.3-openjdk-15
 
+variables:
+  - CHROME_DRIVER: "-DchromeDriver=chromedriver"
+
 stages:
   - test
 
 test:
   stage: test
-  script: mvn test
+  script: mvn $CHROME_DRIVER test
