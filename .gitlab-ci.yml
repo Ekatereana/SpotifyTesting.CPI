@@ -1,0 +1,8 @@
+image: maven:3.6.3-openjdk-15
+
+stages:
+  - test
+
+test:
+  stage: test
+  script: mvn test
