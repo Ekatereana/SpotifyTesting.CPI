@@ -16,7 +16,7 @@ public class AuthTest {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("driver"));
         System.out.println("start");
         driver = new ChromeDriver();
         // full size window
