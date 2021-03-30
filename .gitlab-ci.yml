@@ -1,11 +1,13 @@
-image: maven:3.6.3-openjdk-15
+image: markhobson/maven-chrome:jdk-15
 
 variables:
-  - CHROME_DRIVER: "-DchromeDriver=chromedriver"
+  CHROME_DRIVER: "-DchromeDriver=http://selenium__standalone-chrome:4444/wd/hub/"
+  IS_REMOTE: "-DisRemote=true"
 
 stages:
   - test
 
 test:
   stage: test
-  script: mvn $CHROME_DRIVER test
+  script: mvn $CHROME_DRIVER $IS_REMOTE test
+

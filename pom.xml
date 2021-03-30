@@ -21,7 +21,8 @@
                 <configuration>
                     <!-- since 2.5 -->
                     <systemPropertyVariables>
-                        <driver>src/main/resources/${chromeDriver}</driver>
+                        <remote>${isRemote}</remote>
+                        <driver>${chromeDriver}</driver>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
