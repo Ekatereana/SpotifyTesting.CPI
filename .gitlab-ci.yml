@@ -10,10 +10,10 @@ stages:
 build:
   stage: build
   script: mvn compile
-  after_script:
+  before_script:
     - chmod 777 /drivers/chromedriver
 
 test:
   stage: test
-  script: mvn $CHROME_DRIVER $IS_REMOTE test
+  script: mvn $CHROME_DRIVER test
 
