@@ -1,11 +1,17 @@
 image: markhobson/maven-chrome:jdk-15
 
 variables:
-  CHROME_DRIVER: "-DchromeDriver=http://selenium__standalone-chrome:4444/wd/hub/"
-  IS_REMOTE: "-DisRemote=true"
+  CHROME_DRIVER: "-DchromeDriver=chromedriver"
 
 stages:
+  - build
   - test
+
+build:
+  stage: build
+  script: mvn compile
+  after_script:
+    - chmod 777 /drivers/chromedriver
 
 test:
   stage: test

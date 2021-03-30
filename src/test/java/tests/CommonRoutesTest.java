@@ -8,16 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LaunchWebPlayerPage;
 import pages.LoginPage;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class CommonRoutesTest {
     private WebDriver driver;
@@ -29,27 +24,22 @@ public class CommonRoutesTest {
     public void setup() {
         String sys = System.getProperty("driver");
         System.setProperty("webdriver.chrome.driver", sys);
-        try {
-            driver = Boolean.valueOf(System.getProperty("remote")) ?
-                    new RemoteWebDriver(new URL(sys), new ChromeOptions())
-                    : new ChromeDriver();
-            // full size window
-            driver.manage().window().maximize();
-            wait = new WebDriverWait(driver, 20);
+        driver = new ChromeDriver();
+
+        // full size window
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, 20);
 //        login user
-            driver.get("https://www.spotify.com/ua-en/");
-            homePage = new HomePage(driver);
-            homePage.goToRegistration();
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.loginUser("spotify31test@gmail.com", "test123test");
+        driver.get("https://www.spotify.com/ua-en/");
+        homePage = new HomePage(driver);
+        homePage.goToRegistration();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginUser("spotify31test@gmail.com", "test123test");
 // go to launch webpalyer page
-            WebElement menu =
-                    wait.until(ExpectedConditions
-                            .elementToBeClickable(By.xpath("//*[@id=\"__next\"]/div/div/div[1]/header/div/div[1]/a")));
-            menu.click();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        WebElement menu =
+                wait.until(ExpectedConditions
+                        .elementToBeClickable(By.xpath("//*[@id=\"__next\"]/div/div/div[1]/header/div/div[1]/a")));
+        menu.click();
 
 
     }
