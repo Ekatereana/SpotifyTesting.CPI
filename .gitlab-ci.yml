@@ -10,6 +10,11 @@ cache:
   paths:
     - .m2/repository/
     - target/
+
+before_script:
+  - apt install xvfb
+  - Xvfb&
+
 test:
   stage: test
   script:
