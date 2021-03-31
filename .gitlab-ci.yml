@@ -14,7 +14,7 @@ cache:
     - .m2/repository/
     - target/
 
-
+# should work
 testPass:
   stage: test
   services:
