@@ -32,7 +32,8 @@ public class CommonRoutesTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        driver = new RemoteWebDriver(new URL(System.getProperty("host")), options);
+        driver = new RemoteWebDriver(
+                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
 
         // full size window
 
