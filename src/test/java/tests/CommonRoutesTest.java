@@ -26,16 +26,16 @@ public class CommonRoutesTest {
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.setHeadless(false);
+        options.setHeadless(true);
         driver = new ChromeDriver(options);
 
         // full size window
-        driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 20);
+
 //        login user
         driver.get("https://www.spotify.com/ua-en/");
+        wait = new WebDriverWait(driver, 20);
         homePage = new HomePage(driver);
-        homePage.goToRegistration();
+        homePage.goToRegistration(wait);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginUser("spotify31test@gmail.com", "test123test");
 // go to launch webpalyer page
@@ -43,8 +43,6 @@ public class CommonRoutesTest {
                 wait.until(ExpectedConditions
                         .elementToBeClickable(By.xpath("//*[@id=\"__next\"]/div/div/div[1]/header/div/div[1]/a")));
         menu.click();
-
-
     }
 
     //    link test failed text

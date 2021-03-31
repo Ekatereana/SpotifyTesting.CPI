@@ -12,5 +12,8 @@ cache:
     - target/
 test:
   stage: test
+  before_script:
+    - "Xvfb :99 &"
+    - "export DISPLAY=:99"
   script: mvn test
 

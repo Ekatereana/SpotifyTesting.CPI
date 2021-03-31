@@ -20,10 +20,8 @@ public class AuthTest {
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.setHeadless(false);
+        options.setHeadless(true);
         driver = new ChromeDriver(options);
-        // full size window
-        driver.manage().window().maximize();
     }
 
     //    xpath example
@@ -39,11 +37,11 @@ public class AuthTest {
     @Test
     public void testLoginSuccess() {
         driver.get("https://www.spotify.com/ua-en/");
+        wait = new WebDriverWait(driver, 15);
         homePage = new HomePage(driver);
-        homePage.goToRegistration();
+        homePage.goToRegistration(wait);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginUser("spotify31test@gmail.com", "test123test");
-        wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.elementToBeClickable(By.className("svelte-kdyqkb")));
         Assert.assertEquals("https://www.spotify.com/ua-en/account/overview/?locale=ua-en", driver.getCurrentUrl());
     }
