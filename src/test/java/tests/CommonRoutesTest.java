@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,8 +23,9 @@ public class CommonRoutesTest {
 
     @Before
     public void setup() {
-        String sys = System.getProperty("driver");
-        System.setProperty("webdriver.chrome.driver", sys);
+//        String sys = System.getProperty("driver");
+//        System.setProperty("webdriver.chrome.driver", sys);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
         // full size window

@@ -21,7 +21,7 @@
                 <configuration>
                     <!-- since 2.5 -->
                     <systemPropertyVariables>
-                        <driver>drivers/${chromeDriver}</driver>
+                        <folder></folder>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -29,6 +29,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +17,7 @@ public class AuthTest {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("driver"));
-        System.out.println("start");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         // full size window
         driver.manage().window().maximize();

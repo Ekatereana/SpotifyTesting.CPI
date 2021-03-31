@@ -1,14 +1,9 @@
 image: markhobson/maven-chrome:jdk-15
 
-variables:
-  CHROME_DRIVER: "-DchromeDriver=chromedriver"
-
 stages:
   - test
 
 test:
   stage: test
-  before_script:
-    - chmod 777 /drivers/chromedriver
-  script: mvn $CHROME_DRIVER test
+  script: mvn test
 
