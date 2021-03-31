@@ -5,6 +5,11 @@ stages:
 
 variables:
   MAVEN_OPTS: "-Dhost"
+  MAVEN_FAIL: "-Dfailure=true"
+  MAVEN_PASS: "-Dfailure=false"
+
+before_script:
+  - mkdir .m2/repository/
 
 cache:
   paths:
@@ -12,10 +17,16 @@ cache:
     - target/
 
 
-test:
+testPass:
   stage: test
   services:
     - selenium/standalone-chrome
   script:
-    - mvn test $MAVEN_OPTS=selenium__standalone-chrome
+    - mvn test $MAVEN_PASS $MAVEN_OPTS=selenium__standalone-chrome
 
+testFail:
+  stage: test
+  services:
+    - selenium/standalone-chrome
+  script:
+    - mvn test $MAVEN_FAIL $MAVEN_OPTS=selenium__standalone-chrome

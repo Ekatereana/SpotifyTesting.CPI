@@ -22,6 +22,7 @@
                     <!-- since 2.5 -->
                     <systemPropertyVariables>
                         <host>${host}</host>
+                        <failure>${failure}</failure>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

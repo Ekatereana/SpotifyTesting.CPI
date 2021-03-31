@@ -26,6 +26,16 @@ public class AuthTest {
 //        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--proxy-server='direct://'");
+        options.addArguments("--proxy-bypass-list=*");
+        options.addArguments("--start-maximized");
+
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--ignore-certificate-errors");
         driver = new RemoteWebDriver(
                 new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
     }
