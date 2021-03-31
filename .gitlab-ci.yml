@@ -6,7 +6,6 @@ variables:
 stages:
   - test
 
-
 test:
   stage: test
   before_script:
