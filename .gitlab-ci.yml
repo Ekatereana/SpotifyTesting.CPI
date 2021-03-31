@@ -4,16 +4,12 @@ variables:
   CHROME_DRIVER: "-DchromeDriver=chromedriver"
 
 stages:
-  - build
   - test
 
-build:
-  stage: build
-  script: mvn compile
-  before_script:
-    - chmod 777 /drivers/chromedriver
 
 test:
   stage: test
+  before_script:
+    - chmod 777 chromedriver
   script: mvn $CHROME_DRIVER test
 
