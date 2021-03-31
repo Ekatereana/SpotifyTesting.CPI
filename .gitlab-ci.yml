@@ -17,5 +17,5 @@ test:
   services:
     - selenium/standalone-firefox
   script:
-    - mvn test $MAVEN_OPTS=--host=selenium__standalone-chrome
+    - mvn test $MAVEN_OPTS=selenium__standalone-chrome
 
