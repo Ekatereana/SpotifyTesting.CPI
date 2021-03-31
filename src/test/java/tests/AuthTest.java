@@ -1,27 +1,33 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.SneakyThrows;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LoginPage;
+
+import java.net.URL;
 
 public class AuthTest {
     private static WebDriver driver;
     private WebDriverWait wait;
     private HomePage homePage;
 
+    @SneakyThrows
     @Before
     public void setup() {
 //        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        driver = new ChromeDriver(options);
+        driver = new RemoteWebDriver(
+                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
     }
 
     //    xpath example
