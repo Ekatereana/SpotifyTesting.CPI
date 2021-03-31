@@ -10,6 +10,6 @@ stages:
 test:
   stage: test
   before_script:
-    - chmod 777 chromedriver
+    - chmod 777 /drivers/chromedriver
   script: mvn $CHROME_DRIVER test
 
