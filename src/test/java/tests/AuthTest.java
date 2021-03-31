@@ -46,7 +46,7 @@ public class AuthTest {
         driver.get("https://www.spotify.com/ua-en/");
         homePage = new HomePage(driver);
         homePage.getRegistration().click();
-        Assert.assertEquals(driver.getTitle(), "Войти - Spotify");
+        Assert.assertEquals(driver.getTitle(), "Login - Spotify");
     }
 
 //    id example
