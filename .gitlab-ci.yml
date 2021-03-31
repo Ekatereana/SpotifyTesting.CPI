@@ -15,7 +15,7 @@ cache:
 test:
   stage: test
   services:
-    - selenium/standalone-firefox
+    - selenium/standalone-chrome
   script:
     - mvn test $MAVEN_OPTS=selenium__standalone-chrome
 
