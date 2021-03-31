@@ -4,20 +4,18 @@ stages:
   - test
 
 variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_OPTS: "-Dhost"
 
 cache:
   paths:
     - .m2/repository/
     - target/
 
-before_script:
-  - sudo apt-get install xvfb
-  - Xvfb&
 
 test:
   stage: test
+  services:
+    - selenium/standalone-firefox
   script:
-    - mvn test
-    - mvn prepare-package
+    - mvn test $MAVEN_OPTS=--host=selenium__standalone-chrome
 

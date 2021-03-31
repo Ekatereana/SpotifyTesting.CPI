@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.SneakyThrows;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,11 +11,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LaunchWebPlayerPage;
 import pages.LoginPage;
+
+import java.net.URL;
 
 public class CommonRoutesTest {
     private WebDriver driver;
@@ -22,12 +26,13 @@ public class CommonRoutesTest {
     private LaunchWebPlayerPage page;
     private HomePage homePage;
 
+    @SneakyThrows
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        driver = new ChromeDriver(options);
+        driver = new RemoteWebDriver(new URL(System.getProperty("host")), options);
 
         // full size window
 
