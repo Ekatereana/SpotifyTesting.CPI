@@ -28,6 +28,7 @@ testFail:
     - selenium/standalone-chrome
   script:
     - mvn test $MAVEN_FAIL $MAVEN_OPTS=selenium__standalone-chrome
+    allow_failure: true
 
 
 deploy:
