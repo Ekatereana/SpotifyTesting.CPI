@@ -8,9 +8,6 @@ variables:
   MAVEN_FAIL: "-Dfailure=true"
   MAVEN_PASS: "-Dfailure=false"
 
-before_script:
-  - mkdir .m2/repository/
-
 cache:
   paths:
     - .m2/repository/
