@@ -20,7 +20,7 @@ public class AuthTest {
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
+        options.setHeadless(false);
         driver = new ChromeDriver(options);
         // full size window
         driver.manage().window().maximize();
