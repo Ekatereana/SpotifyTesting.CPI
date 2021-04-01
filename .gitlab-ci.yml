@@ -14,10 +14,9 @@ cache:
     - .m2/repository/
     - target/
 
-# should work
+
 testPass:
   stage: test
-  allow_failure: true
   services:
     - selenium/standalone-chrome
   script:
@@ -25,22 +24,8 @@ testPass:
 
 testFail:
   stage: test
+  allow_failure: true
   services:
     - selenium/standalone-chrome
   script:
     - mvn test $MAVEN_FAIL $MAVEN_OPTS=selenium__standalone-chrome
-  allow_failure: true
-
-
-deploy:
-  stage: deploy
-  image: google/cloud-sdk
-  only:
-    - master
-  services:
-    - docker:dind
-  script:
-    - echo $GCP_SERVICE_KEY > gcloud-service-key.json # Google Cloud service accounts
-    - gcloud auth activate-service-account --key-file=gcloud-service-key.json
-    - gcloud config set project $GCP_PROJECT_ID
-    - gcloud builds submit . --config=cloudbuild.yaml
