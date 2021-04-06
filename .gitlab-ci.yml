@@ -29,3 +29,16 @@ testFail:
     - selenium/standalone-chrome
   script:
     - mvn test $MAVEN_FAIL $MAVEN_OPTS=selenium__standalone-chrome
+
+deploy:
+  stage: deploy
+  image: google/cloud-sdk
+  only:
+    - master
+  services:
+    - docker:dind
+  script:
+    - echo $GCP_SERVICE_KEY > gcloud-service-key.json # Google Cloud service accounts
+    - gcloud auth activate-service-account --key-file=gcloud-service-key.json
+    - gcloud config set project $GCP_PROJECT_ID
+    - gcloud builds submit . --config=cloudbuild.yaml

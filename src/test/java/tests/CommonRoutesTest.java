@@ -45,8 +45,8 @@ public class CommonRoutesTest {
         System.out.println("http://"+System.getProperty("host") + ":4444/wd/hub/");
         driver = new RemoteWebDriver(
                 new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
-
-        // full size window
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//        driver = new ChromeDriver();
 
 //        login user
         driver.get("https://www.spotify.com/ua-en/");
@@ -54,7 +54,7 @@ public class CommonRoutesTest {
         homePage = new HomePage(driver);
         homePage.goToRegistration(wait);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUser("spotify31test@gmail.com", "test123test");
+        loginPage.loginUser("spotifyME123test@gmail.com", "test123test");
 // go to launch webpalyer page
         WebElement menu =
                 wait.until(ExpectedConditions
