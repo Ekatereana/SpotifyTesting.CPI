@@ -57,7 +57,7 @@ public class AuthTest {
         homePage = new HomePage(driver);
         homePage.goToRegistration(wait);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUser("spotifyME123test@gmail.com", "test123test");
+        loginPage.loginUser("ekaterina.gricaenko@binary-studio.com", "21101967VfVf");
         wait.until(ExpectedConditions.elementToBeClickable(By.className("svelte-kdyqkb")));
         Assert.assertEquals("https://www.spotify.com/ua-en/account/overview/?locale=ua-en", driver.getCurrentUrl());
     }

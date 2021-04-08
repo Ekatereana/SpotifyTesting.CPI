@@ -43,10 +43,10 @@ public class CommonRoutesTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--ignore-certificate-errors");
         System.out.println("http://"+System.getProperty("host") + ":4444/wd/hub/");
-        driver = new RemoteWebDriver(
-                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        driver = new ChromeDriver();
+//        driver = new RemoteWebDriver(
+//                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        driver = new ChromeDriver();
 
 //        login user
         driver.get("https://www.spotify.com/ua-en/");
@@ -54,7 +54,7 @@ public class CommonRoutesTest {
         homePage = new HomePage(driver);
         homePage.goToRegistration(wait);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUser("spotifyME123test@gmail.com", "test123test");
+        loginPage.loginUser("ekaterina.gricaenko@binary-studio.com", "21101967VfVf");
 // go to launch webpalyer page
         WebElement menu =
                 wait.until(ExpectedConditions
