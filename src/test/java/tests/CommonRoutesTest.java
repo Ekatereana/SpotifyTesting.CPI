@@ -48,7 +48,6 @@ public class CommonRoutesTest {
 //        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 //        driver = new ChromeDriver();
 
-//        login user
         driver.get("https://www.spotify.com/ua-en/");
         wait = new WebDriverWait(driver, 20);
         homePage = new HomePage(driver);
