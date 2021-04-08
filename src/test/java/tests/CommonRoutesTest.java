@@ -43,10 +43,10 @@ public class CommonRoutesTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--ignore-certificate-errors");
         System.out.println("http://"+System.getProperty("host") + ":4444/wd/hub/");
-//        driver = new RemoteWebDriver(
-//                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new RemoteWebDriver(
+                new URL("http://"+System.getProperty("host") + ":4444/wd/hub/"), options);
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//        driver = new ChromeDriver();
 
 //        login user
         driver.get("https://www.spotify.com/ua-en/");
