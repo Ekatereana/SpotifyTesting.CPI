@@ -2,11 +2,16 @@ image: markhobson/maven-chrome:jdk-15
 
 stages:
   - test
+  - api
 
 variables:
   MAVEN_OPTS: "-Dhost"
   MAVEN_FAIL: "-Dfailure=true"
   MAVEN_PASS: "-Dfailure=false"
+  MAVEN_CLIENT_ID: "-Dclient_id="
+  MAVEN_CLIENT_SECRET: "-Dclient_secret="
+  MAVEN_PAGES_FOLDER: "-Dtest=pages.tests.*Test"
+  MAVEN_API_FOLDER: "-Dtest=api.tests.*Test"
 
 cache:
   paths:
@@ -19,7 +24,7 @@ testPass:
   services:
     - selenium/standalone-chrome
   script:
-    - mvn test $MAVEN_PASS $MAVEN_OPTS=selenium__standalone-chrome
+    - mvn test $MAVEN_PASS $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
 
 testFail:
   stage: test
@@ -27,7 +32,15 @@ testFail:
   services:
     - selenium/standalone-chrome
   script:
-    - mvn test $MAVEN_FAIL $MAVEN_OPTS=selenium__standalone-chrome
+    - mvn test $MAVEN_FAIL $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
+
+apiTest:
+  stage: api
+  allow_failure: true
+  services:
+    - selenium/standalone-chrome
+  script:
+    - mvn test $MAVEN_CLIENT_ID=$CLIENTID $MAVEN_CLIENT_SECRET=$CLIENT_SECRET $MAVEN_API_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
 
 #deploy:
 #  stage: deploy

@@ -1,4 +1,4 @@
-package pages;
+package pages.makets;
 
 import lombok.Data;
 import org.openqa.selenium.By;

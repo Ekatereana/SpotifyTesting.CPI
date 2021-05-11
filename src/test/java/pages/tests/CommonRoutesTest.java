@@ -1,4 +1,4 @@
-package tests;
+package pages.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
@@ -9,14 +9,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.HomePage;
-import pages.LaunchWebPlayerPage;
-import pages.LoginPage;
+import pages.makets.HomePage;
+import pages.makets.LaunchWebPlayerPage;
+import pages.makets.LoginPage;
 
 import java.net.URL;
 
