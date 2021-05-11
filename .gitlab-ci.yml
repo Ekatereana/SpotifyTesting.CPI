@@ -19,21 +19,21 @@ cache:
     - target/
 
 
-testPass:
-  allow_failure: true
-  stage: test
-  services:
-    - selenium/standalone-chrome
-  script:
-    - mvn test $MAVEN_PASS $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
-
-testFail:
-  stage: test
-  allow_failure: true
-  services:
-    - selenium/standalone-chrome
-  script:
-    - mvn test $MAVEN_FAIL $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
+#testPass:
+#  allow_failure: true
+#  stage: test
+#  services:
+#    - selenium/standalone-chrome
+#  script:
+#    - mvn test $MAVEN_PASS $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
+#
+#testFail:
+#  stage: test
+#  allow_failure: true
+#  services:
+#    - selenium/standalone-chrome
+#  script:
+#    - mvn test $MAVEN_FAIL $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
 
 apiTest:
   stage: api
