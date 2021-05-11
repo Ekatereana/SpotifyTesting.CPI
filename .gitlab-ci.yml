@@ -20,6 +20,7 @@ cache:
 
 
 testPass:
+  allow_failure: true
   stage: test
   services:
     - selenium/standalone-chrome
