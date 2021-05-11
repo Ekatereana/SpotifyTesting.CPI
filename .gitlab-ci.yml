@@ -38,10 +38,8 @@ testFail:
 apiTest:
   stage: api
   allow_failure: true
-  services:
-    - selenium/standalone-chrome
   script:
-    - mvn test $MAVEN_CLIENT_ID=$CLIENTID $MAVEN_CLIENT_SECRET=$CLIENT_SECRET $MAVEN_API_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
+    - mvn test $MAVEN_CLIENT_ID=$CLIENTID $MAVEN_CLIENT_SECRET=$CLIENT_SECRET $MAVEN_API_FOLDER
 
 #deploy:
 #  stage: deploy
