@@ -19,6 +19,8 @@ public class SpotifyApiTest implements Config {
 
     @BeforeClass
     public static void init() {
+        System.setProperty("client_id", "e6726f7250e24b098f312c683d93c6a8");
+        System.setProperty("client_secret", "e6c5c21ba8794c64a602c272cff4344e");
         token = AuthService.getToken("playlist-read-private");
     }
 
