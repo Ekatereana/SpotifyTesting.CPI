@@ -31,7 +31,7 @@ public abstract class AuthService implements Config {
                 .post(Config.AUTH_TOKEN_URL)
                 .body();
 
-        System.out.println("client_id" + CLIENT_ID);
+//        System.out.println("client_id " + CLIENT_ID);
         return JsonPath.from(auth.asString()).get("access_token").toString();
     }
 

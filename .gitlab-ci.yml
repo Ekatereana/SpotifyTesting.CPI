@@ -11,7 +11,8 @@ variables:
   MAVEN_CLIENT_ID: "-Dclient_id="
   MAVEN_CLIENT_SECRET: "-Dclient_secret="
   MAVEN_PAGES_FOLDER: "-Dtest=pages.tests.*Test"
-  MAVEN_API_FOLDER: "-Dtest=api.tests.*Test"
+  MAVEN_API_FOLDER: "-Dtest=api.tests.rest.*Test"
+  MAVEN_API_REPORT_FOLDER: "-Dtest=api.tests.toreports.*Test"
 
 cache:
   paths:
@@ -19,6 +20,7 @@ cache:
     - target/
 
 
+# removed to speed up running api tests
 #testPass:
 #  allow_failure: true
 #  stage: test
@@ -39,6 +41,16 @@ apiTest:
   stage: api
   script:
     - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_FOLDER
+
+apiReportGeneratingTest:
+  stage: api
+  allow_failure: true
+  script:
+    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
+  artifacts:
+    paths:
+      - target/site/serenity/index.html
+    expire_in: 1 week
 
 #deploy:
 #  stage: deploy

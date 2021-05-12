@@ -1,5 +1,6 @@
-package api.tests;
+package api.tests.rest;
 
+import api.tests.Config;
 import api.tests.models.Error;
 import api.tests.services.AuthService;
 import api.tests.services.SpotifyApiEndpointService;
