@@ -46,7 +46,7 @@ apiReportGeneratingTest:
   stage: api
   allow_failure: true
   script:
-    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
+    - mvn clean verify $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
   artifacts:
     paths:
       - target/site/serenity/index.html
