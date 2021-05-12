@@ -33,7 +33,6 @@ public class PlayerSpotifyAPITest implements Config {
         token = AuthService.getToken("playlist-read-private");
     }
 
-    @Test
     @Step("add new track to queue. Should Fail because this feature is premium")
     public void verifyPostToPlaybackOk() {
         var res = SpotifyApiEndpointService.given()
@@ -47,7 +46,6 @@ public class PlayerSpotifyAPITest implements Config {
     }
 
     @SneakyThrows
-    @Test
     @Step("get album by it's id. Should pass")
     public void verifyGetAlbumById() {
         var res = SpotifyApiEndpointService.given()
@@ -65,7 +63,6 @@ public class PlayerSpotifyAPITest implements Config {
 
 
     @SneakyThrows
-    @Test
     @Step("verify not existing album return error. Should pass")
     public void verifyGetNotExistAlbumById() {
         var res = SpotifyApiEndpointService.given()
@@ -81,7 +78,6 @@ public class PlayerSpotifyAPITest implements Config {
 
     }
 
-    @Test
     @Step("get album's tracks by it's id and verify body not nullable. Should pass")
     public void verifySongFromAlbumNotExists() {
         var res = SpotifyApiEndpointService.given()
