@@ -49,7 +49,7 @@ apiReportGeneratingTest:
     - mvn clean verify $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
   artifacts:
     paths:
-      - target/site/serenity/index.html
+      - target/site/serenity/
     expire_in: 1 week
 
 #deploy:
