@@ -1,0 +1,6 @@
+Founded difference on line ::20::
+Input values:
+10,  trap
+Actual values:
+no such line
+Difference in:: 10,  trap
