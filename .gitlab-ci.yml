@@ -58,7 +58,7 @@ cache:
 cucumber:
   stage: cucumber
   script:
-    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_CUCUMBER
+    - mvn test "$MAVEN_CLIENT_ID"="$CLIENTID" "$MAVEN_CLIENT_SECRET"="$CLIENT_SECRET" "$MAVEN_CUCUMBER"
 
 #deploy:
 #  stage: deploy
