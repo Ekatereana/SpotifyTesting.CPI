@@ -32,7 +32,7 @@ public class DataMigrationTest implements Config {
     @Test
     public void getPop() {
         statement = conn.createStatement();
-        String csvFilePath = "ActualResultPop.csv";
+        String csvFilePath = "migration/results/ActualResultPop.csv";
         ResultSet result = statement.executeQuery(getPop);
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(csvFilePath));
 
@@ -52,7 +52,11 @@ public class DataMigrationTest implements Config {
         }
         statement.close();
         fileWriter.close();
-        File diff = new File(CompareCSVsService.showDiff("ExpectedResultGetPop.csv", csvFilePath, "PopRequest.txt"));
+        File diff = new File(
+                CompareCSVsService
+                        .showDiff("migration/results/ExpectedResultGetPop.csv",
+                                csvFilePath,
+                                "migration/results/PopRequest.txt"));
 
 //        difference file should be empty
         assertEquals(diff.length(), 0);
@@ -63,7 +67,7 @@ public class DataMigrationTest implements Config {
     @Test
     public void getCount() {
         statement = conn.createStatement();
-        String csvFilePath = "ActualResultCount.csv";
+        String csvFilePath = "migration/results/ActualResultCount.csv";
         ResultSet result = statement.executeQuery(getCount);
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(csvFilePath));
 
@@ -82,7 +86,11 @@ public class DataMigrationTest implements Config {
         }
         statement.close();
         fileWriter.close();
-        File diff = new File(CompareCSVsService.showDiff("ExpectedResultCount.csv", csvFilePath, "CountRequest.txt"));
+        File diff = new File(
+                CompareCSVsService
+                        .showDiff("migration/results/ExpectedResultCount.csv",
+                                csvFilePath,
+                                "migration/results/CountRequest.txt"));
 
 //        difference file should be empty
         assertEquals(0, diff.length());

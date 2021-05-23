@@ -8,9 +8,9 @@ import java.sql.*;
 public class ExporterTbl implements Config {
 
     public static void main(String[] args) {
-        String csvFilePath = "DataFromSpotifyDB.csv";
-//        String csvFilePath = "ExpectedResultGetPop.csv";
-//        String csvFilePath = "ExpectedResultCount.csv";
+        String csvFilePath = "migration/results/DataFromSpotifyDB.csv";
+//        String csvFilePath = "migration/results/ExpectedResultGetPop.csv";
+//        String csvFilePath = "migration/results/ExpectedResultCount.csv";
 
         try (Connection connection = DriverManager.getConnection(url, CreateConnectionPropertiesService.populateProps(user, password))) {
             String sql = "select s.id, s.track_name, s.artist_name, s.genre  from spotify_data as s";
