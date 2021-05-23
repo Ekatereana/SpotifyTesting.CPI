@@ -1,11 +1,8 @@
-package api.tests.services;
+package api.services;
 
-import api.tests.Config;
+import api.Config;
 import io.restassured.path.json.JsonPath;
-import lombok.SneakyThrows;
-import org.apache.http.client.utils.URIBuilder;
 
-import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 

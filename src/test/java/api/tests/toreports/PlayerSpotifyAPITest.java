@@ -1,8 +1,8 @@
 package api.tests.toreports;
 
-import api.tests.Config;
-import api.tests.services.AuthService;
-import api.tests.services.SpotifyApiEndpointService;
+import api.Config;
+import api.services.AuthService;
+import api.services.SpotifyApiEndpointService;
 import lombok.SneakyThrows;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Step;
@@ -22,8 +22,6 @@ public class PlayerSpotifyAPITest implements Config {
     private final String ERROR = "error";
     private final String MESSAGE = "message";
     private final String NAME = "name";
-    private final String TRACK_URL =
-            "https://open.spotify.com/track/0ZBC6Eg6DjZRhgUmFdtzGH?si=bda424b075994711";
     private final String ALBUM_ID = "12ViHXhXTAxPEDM1TYCxvF";
     private final String ALBUM_NAME = "The Wrong Kind of War";
     private final String INVALID_ID = "invalid id";
@@ -40,7 +38,7 @@ public class PlayerSpotifyAPITest implements Config {
     @Test
     @Step("add new track to queue. Should Fail because this feature is premium")
     public void verifyPostToPlaybackOk() {
-        var res = SpotifyApiEndpointService.given()
+       SpotifyApiEndpointService.given()
                 .header("Authorization", "Bearer " + token)
                 .queryParam("uri", TRACK_URL)
                 .post(PLAYER_ADD_URL)

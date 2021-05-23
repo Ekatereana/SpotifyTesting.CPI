@@ -1,4 +1,4 @@
-package pages.tests;
+package pages.tests.tests;
 
 import lombok.SneakyThrows;
 import org.junit.*;
@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.makets.HomePage;
-import pages.makets.LoginPage;
+import pages.tests.makets.HomePage;
+import pages.tests.makets.LoginPage;
 
 import java.net.URL;
 

@@ -1,4 +1,4 @@
-package pages.makets;
+package pages.tests.makets;
 
 import lombok.Data;
 import org.openqa.selenium.WebDriver;

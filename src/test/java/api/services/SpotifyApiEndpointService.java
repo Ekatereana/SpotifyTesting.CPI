@@ -1,6 +1,6 @@
-package api.tests.services;
+package api.services;
 
-import api.tests.Config;
+import api.Config;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;

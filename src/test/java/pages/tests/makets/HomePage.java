@@ -1,4 +1,4 @@
-package pages.makets;
+package pages.tests.makets;
 
 import jdk.jfr.DataAmount;
 import lombok.Data;
