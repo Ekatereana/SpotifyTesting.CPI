@@ -2,7 +2,8 @@ image: markhobson/maven-chrome:jdk-15
 
 stages:
 #  - test
-  - api
+#  - api
+  - cucumber
 
 variables:
   MAVEN_OPTS: "-Dhost"
@@ -13,6 +14,7 @@ variables:
   MAVEN_PAGES_FOLDER: "-Dtest=pages.tests.*Test"
   MAVEN_API_FOLDER: "-Dtest=api.tests.rest.*Test"
   MAVEN_API_REPORT_FOLDER: "-Dtest=api.tests.toreports.*Test"
+  MAVEN_CUCUMBER: "-Dtest=api.cucumber.tests.Runner"
 
 cache:
   paths:
@@ -37,20 +39,26 @@ cache:
 #  script:
 #    - mvn test $MAVEN_FAIL $MAVEN_PAGES_FOLDER $MAVEN_OPTS=selenium__standalone-chrome
 
-apiTest:
-  stage: api
-  script:
-    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_FOLDER
+# removed to speed up cucumber api tests
+#apiTest:
+#  stage: api
+#  script:
+#    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_FOLDER
+#
+#apiReportGeneratingTest:
+#  stage: api
+#  allow_failure: true
+#  script:
+#    - mvn clean verify $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
+#  artifacts:
+#    paths:
+#      - target/site/serenity/
+#    expire_in: 1 week
 
-apiReportGeneratingTest:
-  stage: api
-  allow_failure: true
+cucumber:
+  stage: cucumber
   script:
-    - mvn clean verify $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_API_REPORT_FOLDER
-  artifacts:
-    paths:
-      - target/site/serenity/
-    expire_in: 1 week
+    - mvn test $MAVEN_CLIENT_ID="$CLIENTID" $MAVEN_CLIENT_SECRET="$CLIENT_SECRET" $MAVEN_CUCUMBER
 
 #deploy:
 #  stage: deploy
